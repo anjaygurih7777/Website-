@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚠ Peringatan Virus!</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            background-color: black;
+            color: green;
+            overflow: hidden;
+        }
+        .warning {
+            font-size: 30px;
+            font-weight: bold;
+            color: red;
+            margin-top: 10%;
+        }
+        #virus-message {
+            font-size: 20px;
+            color: yellow;
+        }
+        #terminal {
+            background-color: black;
+            color: green;
+            font-size: 16px;
+            text-align: left;
+            padding: 20px;
+            height: 200px;
+            overflow: hidden;
+            border: 2px solid green;
+            margin: 20px;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="warning">⚠ Sistem Anda Diretas! ⚠</h1>
+    <p id="virus-message">Koneksi Anda sedang disusupi! Jangan tutup halaman ini!</p>
+
+    <div id="terminal">
+        [SYSTEM]: Inisialisasi peretasan...\n
+    </div>
+
+    <script>
+        function startPrank() {
+            let count = 0;
+            let interval = setInterval(() => {
+                document.body.style.backgroundColor = count % 2 === 0 ? "red" : "black";
+                count++;
+                if (count > 10) clearInterval(interval);
+            }, 300);
+
+            setTimeout(() => { alert("🔥 Virus mulai menginfeksi perangkat Anda!"); }, 2000);
+            setTimeout(() => { alert("⚠ Semua data akan terhapus dalam 10 detik!"); }, 5000);
+
+            if (navigator.vibrate) {
+                let vibratePattern = [500, 200, 500, 200, 500, 200];
+                navigator.vibrate(vibratePattern);
+            }
+
+            let terminal = document.getElementById("terminal");
+            let messages = [
+                "[SYSTEM]: Mengakses file sistem...",
+                "[SYSTEM]: Data pengguna ditemukan!",
+                "[HACKER]: Mengunduh informasi...",
+                "[SYSTEM]: Transfer file dimulai...",
+                "[HACKER]: Menghapus semua data...",
+                "[ERROR]: Sistem gagal! 🔥🔥🔥"
+            ];
+            let i = 0;
+
+            function typeText() {
+                if (i < messages.length) {
+                    terminal.innerText += "\n" + messages[i];
+                    i++;
+                    setTimeout(typeText, 1500);
+                }
+            }
+            setTimeout(typeText, 1000);
+        }
+
+        window.onload = startPrank;
+    </script>
+
+</body>
+</html>
